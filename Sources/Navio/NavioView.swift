@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 16.0, *)
-public struct NavioView<Root: View, Route: Hashable, Destination: View, Coordinator: NavioCoordinating>: View {
+public struct NavioView<Root: View, Route: Hashable, Destination: View, Coordinator: NavioCoordinating>: View where Coordinator.Route: Hashable {
     @ObservedObject private var coordinator: Coordinator
     private let root: Root
     private let destinationBuilder: (Coordinator.Route) -> Destination
