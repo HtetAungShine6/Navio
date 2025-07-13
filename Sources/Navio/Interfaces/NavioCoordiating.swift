@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-public protocol NavioCoordinating: ObservableObject {
-    associatedtype Route: Hashable
+public protocol NavioCoordinating: ObservableObject where Route: Hashable {
+    associatedtype Route
 
     var path: NavigationPath { get set }
 
