@@ -25,10 +25,9 @@ public struct NavioView<Root: View, Route: Hashable, Destination: View>: View {
 
     public var body: some View {
         NavigationStack(path: $coordinator.path) {
-            root
-                .navigationDestination(for: Route.self) { route in
-                    destinationBuilder(route)
-                }
+            root.navigationDestination(for: Route.self) { route in
+                destinationBuilder(route)
+            }
         }
     }
 }
