@@ -8,15 +8,15 @@
 import SwiftUI
 
 @available(iOS 16.0, *)
-public struct NavioView<Root: View, Route: Hashable, Destination: View>: View {
-    @ObservedObject private var coordinator: NavioCoordinator<Route>
+public struct NavioView<Root: View, Route: Hashable, Destination: View, Coordinator: NavioCoordinating>: View {
+    @ObservedObject private var coordinator: Coordinator
     private let root: Root
-    private let destinationBuilder: (Route) -> Destination
+    private let destinationBuilder: (Coordinator.Route) -> Destination
 
     public init(
-        _ coordinator: NavioCoordinator<Route>,
+        _ coordinator: Coordinator,
         @ViewBuilder root: () -> Root,
-        @ViewBuilder route: @escaping (Route) -> Destination
+        @ViewBuilder route: @escaping (Coordinator.Route) -> Destination
     ) {
         self.coordinator = coordinator
         self.root = root()
@@ -25,7 +25,7 @@ public struct NavioView<Root: View, Route: Hashable, Destination: View>: View {
 
     public var body: some View {
         NavigationStack(path: $coordinator.path) {
-            root.navigationDestination(for: Route.self) { route in
+            root.navigationDestination(for: Coordinator.Route.self) { route in
                 destinationBuilder(route)
             }
         }
