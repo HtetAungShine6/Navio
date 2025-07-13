@@ -23,7 +23,8 @@ It provides a clean API for managing push/pop/reset navigation using a central c
 Navio supports Swift Package Manager.
 
 You can add it to your Xcode project by selecting:
-**File > Add Packages…** and entering your GitHub repo URL. (https://github.com/HtetAungShine6/Navio.git)
+**File > Add Packages…** and entering the GitHub repo URL attached below. ⬇️ 
+(https://github.com/HtetAungShine6/Navio.git)
 
 ---
 
